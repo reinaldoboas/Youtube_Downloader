@@ -1,14 +1,17 @@
-# youtube_downloader.py
-# Data: 05/07/2021
+# ./youtube_downloader.py
+# Criação: 05/07/2021
+# Versão: 1.2
 # Descrição: Script criado com a intenção de baixar videos do Youtube
+# Modo de uso: python youtube_downloader.py <url_do_video_do_YouTube>
 
 from pytube import YouTube
+import sys
 
-# Aqui se define o link do vídeo do Youtube que será baixado
-video  = YouTube('https://www.youtube.com/watch?v=wLeCegZPM9M&list=PLDaam_oLGwaqUs-r0Sn0Bl70oNLMK2aUW&index=464')
+# Aqui se define por argumento o link do vídeo do Youtube que será baixado
+video = YouTube(sys.argv[1])
 
 # Define a qualidade do vídeo na mais alta qualidade
 stream = video.streams.get_highest_resolution()
 
 # Pasta onde será baixado o conteúdo
-stream.download(output_path='C:/Users/reinaldo/Documents/Scripts/downloads')
+stream.download(output_path='/tmp/')
